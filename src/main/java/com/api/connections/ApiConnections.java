@@ -14,8 +14,6 @@ import org.testng.annotations.BeforeTest;
 import com.api.configuration.Configuration;
 
 public class ApiConnections {
-
-	@BeforeTest
 	public static String getMakeConnections() throws IOException {
 		String responseReader = "";
 		URL url = new URL(Configuration.pro.getProperty("url"));
