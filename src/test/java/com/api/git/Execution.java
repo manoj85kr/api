@@ -10,7 +10,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 
 @Test
-public class Testing extends ApiConnections {
+public class Execution extends ApiConnections {
 	public void connectionHit() throws JsonMappingException, JsonProcessingException, IOException {
 		jsonResp.extract(ApiConnections.getMakeConnections());
 	}
