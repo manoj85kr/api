@@ -1,4 +1,4 @@
-name: CI Pipeline - Selenium Tests
+name: CI Pipeline - API Tests
 
 on:
   push:
