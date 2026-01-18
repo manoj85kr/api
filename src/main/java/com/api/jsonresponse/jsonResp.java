@@ -1,5 +1,9 @@
 package com.api.jsonresponse;
 
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 import com.api.extractor.product;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -8,20 +12,54 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class jsonResp {
 	static ObjectMapper mapper = new ObjectMapper();
 
-	public static void extract(String values) throws JsonMappingException, JsonProcessingException {
-		product[] prod = mapper.readValue(values, product[].class);
-		for (product pr : prod) {
-			try {
-				System.out.println(pr.getId() + "\n" + pr.getName() + "\n" + pr.getdata().getCapacity() + "\n"
-						+ pr.getdata().getCapacityGB() + "\n" + pr.getdata().getCaseSize() + "\n"
-						+ pr.getdata().getColor() + "\n" + pr.getdata().getCpuModel() + "\n"
-						+ pr.getdata().getDescription() + "\n" + pr.getdata().getGeneration() + "\n"
-						+ pr.getdata().getHardDiskSize() + "\n" + pr.getdata().getPrice() + "\n"
-						+ pr.getdata().getScreenSize() + "\n" + pr.getdata().getStrapColour() + "\n"
-						+ pr.getdata().getYear());
-			} catch (NullPointerException e) {
-				e.printStackTrace();
-			}
+	public static Map<String, String> extract(String values) throws JsonMappingException, JsonProcessingException {
+		product pr = mapper.readValue(values, product.class);
+		Map<String, String> jsonParams = new LinkedHashMap<>();
+		try {
+			jsonParams.put("id", pr.getId());
+			jsonParams.put("Name", pr.getName());
+			jsonParams.put("createdAt", pr.getcreatedAt());
+			jsonParams.put("Year", String.valueOf(pr.getdata().getYear()));
+			jsonParams.put("Price", String.valueOf(pr.getdata().getPrice()));
+			jsonParams.put("CPU model", pr.getdata().getCpuModel());
+			jsonParams.put("Hard Disk Size", pr.getdata().getHardDiskSize());
+		} catch (NullPointerException e) {
+			e.printStackTrace();
 		}
+		return jsonParams;
+	}
+
+	public static Map<String, String> postExtract(String values) throws JsonMappingException, JsonProcessingException {
+		product pr = mapper.readValue(values, product.class);
+		Map<String, String> jsonParams = new LinkedHashMap<>();
+		try {
+			jsonParams.put("id", pr.getId());
+			jsonParams.put("Name", pr.getName());
+			jsonParams.put("createdAt", pr.getcreatedAt());
+			jsonParams.put("Year", String.valueOf(pr.getdata().getYear()));
+			jsonParams.put("Price", String.valueOf(pr.getdata().getPrice()));
+			jsonParams.put("CPU model", pr.getdata().getCpuModel());
+			jsonParams.put("Hard Disk Size", pr.getdata().getHardDiskSize());
+		} catch (NullPointerException e) {
+			e.printStackTrace();
+		}
+		return jsonParams;
+	}
+
+	public static Map<String, String> putExtract(String values) throws JsonMappingException, JsonProcessingException {
+		product pr = mapper.readValue(values, product.class);
+		Map<String, String> jsonParams = new LinkedHashMap<>();
+		try {
+			jsonParams.put("id", pr.getId());
+			jsonParams.put("Name", pr.getName());
+			jsonParams.put("createdAt", pr.getupdatedAt());
+			jsonParams.put("Year", String.valueOf(pr.getdata().getYear()));
+			jsonParams.put("Price", String.valueOf(pr.getdata().getPrice()));
+			jsonParams.put("CPU model", pr.getdata().getCpuModel());
+			jsonParams.put("Hard Disk Size", pr.getdata().getHardDiskSize());
+		} catch (NullPointerException e) {
+			e.printStackTrace();
+		}
+		return jsonParams;
 	}
 }

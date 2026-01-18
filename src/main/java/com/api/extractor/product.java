@@ -4,17 +4,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class product {
 
-	private int id;
+	private String id;
 	private String name;
+	private String createdAt;
+	private String updatedAt;
 
 	@JsonProperty("data")
 	private Data data;
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -24,6 +26,22 @@ public class product {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getcreatedAt() {
+		return createdAt;
+	}
+
+	public void setcreatedAt(String createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public String getupdatedAt() {
+		return updatedAt;
+	}
+
+	public void setupdatedAt(String updatedAt) {
+		this.updatedAt = updatedAt;
 	}
 
 	public Data getdata() {
