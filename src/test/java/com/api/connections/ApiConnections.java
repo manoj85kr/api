@@ -109,4 +109,79 @@ public class ApiConnections {
 
 		return sb.toString();
 	}
+
+	public static String patchMakeConnection(String id) throws IOException {
+		StringBuilder sb = new StringBuilder();
+		String reader = "";
+		URL url = new URL(Configuration.pro.getProperty("url") + "/" + id);
+		System.out.println("-------------------------------------------------");
+		System.out.println("Url : " + url);
+		HttpURLConnection con = (HttpURLConnection) url.openConnection();
+
+		con.setRequestMethod("PATCH");
+		// con.setRequestProperty("X-HTTP-Method-Override", "PATCH");
+		con.setRequestProperty("Content-Type", Configuration.pro.getProperty("Content-Type"));
+		con.setDoOutput(true);
+
+		try (OutputStream os = con.getOutputStream()) {
+			System.out.println(constructUrl.patchBodyUrlConstructor());
+			byte[] input = constructUrl.patchBodyUrlConstructor().getBytes("UTF-8");
+			os.write(input);
+			os.flush();
+		}
+		con.connect();
+		if (con.getResponseCode() == 200) {
+			BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+			while ((reader = br.readLine()) != null) {
+				sb.append(reader);
+			}
+			br.close();
+		} else {
+			System.out.println(con.getResponseCode());
+			BufferedReader br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
+			while ((reader = br.readLine()) != null) {
+				sb.append(reader);
+			}
+			br.close();
+		}
+
+		return sb.toString();
+	}
+
+	public static String deleteMakeConnection(String id) throws IOException {
+		StringBuilder sb = new StringBuilder();
+		String reader = "";
+		URL url = new URL(Configuration.pro.getProperty("url") + "/" + id);
+		System.out.println("-------------------------------------------------");
+		System.out.println("Url : " + url);
+		HttpURLConnection con = (HttpURLConnection) url.openConnection();
+
+		con.setRequestMethod("DELETE");
+		con.setRequestProperty("Content-Type", Configuration.pro.getProperty("Content-Type"));
+		con.setDoOutput(true);
+
+//		try (OutputStream os = con.getOutputStream()) {
+//			System.out.println(constructUrl.patchBodyUrlConstructor());
+//			byte[] input = constructUrl.patchBodyUrlConstructor().getBytes("UTF-8");
+//			os.write(input);
+//			os.flush();
+//		}
+		con.connect();
+		if (con.getResponseCode() == 200) {
+			BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+			while ((reader = br.readLine()) != null) {
+				sb.append(reader);
+			}
+			br.close();
+		} else {
+			System.out.println(con.getResponseCode());
+			BufferedReader br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
+			while ((reader = br.readLine()) != null) {
+				sb.append(reader);
+			}
+			br.close();
+		}
+
+		return sb.toString();
+	}
 }

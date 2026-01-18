@@ -30,4 +30,11 @@ public class constructUrl {
 		reqbody.setdata(datas);
 		return mapper.writeValueAsString(reqbody);
 	}
+
+	public static String patchBodyUrlConstructor() throws JsonProcessingException {
+		patchrequestbody reqbody = new patchrequestbody();
+		ObjectMapper mapper = new ObjectMapper();
+		reqbody.setName("Apple MacBook Pro 16 (Updated Name as : Manoj)");
+		return mapper.writeValueAsString(reqbody);
+	}
 }

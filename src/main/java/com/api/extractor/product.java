@@ -8,6 +8,7 @@ public class product {
 	private String name;
 	private String createdAt;
 	private String updatedAt;
+	private String message;
 
 	@JsonProperty("data")
 	private Data data;
@@ -42,6 +43,14 @@ public class product {
 
 	public void setupdatedAt(String updatedAt) {
 		this.updatedAt = updatedAt;
+	}
+
+	public String getmessage() {
+		return message;
+	}
+
+	public void setmessage(String message) {
+		this.message = message;
 	}
 
 	public Data getdata() {
