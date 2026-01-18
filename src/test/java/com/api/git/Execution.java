@@ -13,29 +13,32 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 public class Execution extends ApiConnections {
 	String id = "";
 
-	@Test(enabled = false)
-	public void getConnection() throws JsonMappingException, JsonProcessingException, IOException {
-		jsonResp.extract(ApiConnections.getMakeConnections());
-	}
-
 	@Test(priority = 1)
 	public void postConnection() throws JsonMappingException, JsonProcessingException, IOException {
+		System.out.println("********************Start of Post api*********************");
 		id = jsonResp.postExtract(ApiConnections.postMakeConnection()).get("id");
+		System.out.println("**********************End of Post api*********************");
 	}
 
 	@Test(priority = 2)
 	public void putConnection() throws JsonMappingException, JsonProcessingException, IOException {
+		System.out.println("**********************Start of Put api*********************");
 		jsonResp.putExtract(ApiConnections.putMakeConnection(id));
+		System.out.println("************************End of Put api*********************");
 	}
-//
-//	@Test(priority = 3)
-//	public void patchConnection() throws JsonMappingException, JsonProcessingException, IOException {
-//		jsonResp.patchExtract(ApiConnections.patchMakeConnection(id));
-//	}
-	
+
 	@Test(priority = 3)
+	public void patchConnection() throws JsonMappingException, JsonProcessingException, IOException {
+		System.out.println("**********************Start of Patch api*********************");
+		jsonResp.patchExtract(ApiConnections.putMakeConnection(id));
+		System.out.println("************************End of Patch api*********************");
+	}
+
+	@Test(priority = 4)
 	public void deleteConnection() throws JsonMappingException, JsonProcessingException, IOException {
+		System.out.println("**********************Start of Delete api*********************");
 		jsonResp.deleteExtract(ApiConnections.deleteMakeConnection(id));
+		System.out.println("************************End of Delete api*********************");
 	}
 
 }

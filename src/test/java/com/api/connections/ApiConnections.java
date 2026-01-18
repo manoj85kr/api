@@ -70,6 +70,7 @@ public class ApiConnections {
 			}
 			br.close();
 		}
+		System.out.println("Post Call Response : " + sb.toString());
 		return sb.toString();
 	}
 
@@ -106,7 +107,7 @@ public class ApiConnections {
 			}
 			br.close();
 		}
-
+		System.out.println("Put Call Response : " + sb.toString());
 		return sb.toString();
 	}
 
@@ -144,7 +145,7 @@ public class ApiConnections {
 			}
 			br.close();
 		}
-
+		System.out.println("Patch Call Response : " + sb.toString());
 		return sb.toString();
 	}
 
@@ -160,12 +161,6 @@ public class ApiConnections {
 		con.setRequestProperty("Content-Type", Configuration.pro.getProperty("Content-Type"));
 		con.setDoOutput(true);
 
-//		try (OutputStream os = con.getOutputStream()) {
-//			System.out.println(constructUrl.patchBodyUrlConstructor());
-//			byte[] input = constructUrl.patchBodyUrlConstructor().getBytes("UTF-8");
-//			os.write(input);
-//			os.flush();
-//		}
 		con.connect();
 		if (con.getResponseCode() == 200) {
 			BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream()));
@@ -181,7 +176,7 @@ public class ApiConnections {
 			}
 			br.close();
 		}
-
+		System.out.println("Delete Call Response : " + sb.toString());
 		return sb.toString();
 	}
 }
