@@ -12,7 +12,7 @@ public class BaseTest {
 
 	@BeforeSuite
 	public void setupReport() {
-		extent = ExtentManager.createInstance();
+		extent = ExtentManager.getInstance();
 	}
 
 	@AfterSuite
