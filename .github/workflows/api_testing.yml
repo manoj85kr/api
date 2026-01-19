@@ -40,7 +40,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: Extent-Report
-        path: target/extent-report/
+        path: ExtentsReport/
 
     - name: List test-output folder
       if: always()
