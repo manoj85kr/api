@@ -18,7 +18,7 @@ public class Execution extends BaseTest {
 	public void postConnection() throws JsonMappingException, JsonProcessingException, IOException {
 		ExtentTest test = extent.createTest("Post Connection Test");
 		System.out.println("********************Start of Post api*********************");
-		test.log(Status.INFO, "Test started");
+		test.log(Status.INFO, "Test started..");
 		id = jsonResp.postExtract(ApiConnections.postMakeConnection()).get("id");
 		test.log(Status.INFO, "Test Passed");
 		System.out.println("**********************End of Post api*********************");
