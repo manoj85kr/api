@@ -90,7 +90,8 @@ public class ApiConnections {
 		con.setRequestMethod("POST");
 		con.setRequestProperty("Content-Type", Configuration.pro.getProperty("Content-Type"));
 		try {
-			con.setRequestProperty("Authorization", Configuration.pro.getProperty("Authorization"));
+			//con.setRequestProperty("Authorization", Configuration.pro.getProperty("Authorization"));
+			con.setRequestProperty("Authorization", "Bearer " + System.getenv("AUTHORIZATION"));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
