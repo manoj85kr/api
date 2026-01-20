@@ -37,7 +37,93 @@ public class ApiConnections {
 		return sb.toString();
 	}
 
-	public static String postMakeConnection() throws IOException {
+	public static String postMakeConnection() throws IOException, InterruptedException {
+		StringBuilder sb = new StringBuilder();
+		String reader = "";
+		URL url = new URL(Configuration.pro.getProperty("url"));
+		System.out.println("Url : " + url);
+		HttpURLConnection con = (HttpURLConnection) url.openConnection();
+
+		con.setRequestMethod("POST");
+		con.setRequestProperty("Content-Type", Configuration.pro.getProperty("Content-Type"));
+		try {
+			con.setRequestProperty("Authorization", Configuration.pro.getProperty("Authorization"));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		con.setDoOutput(true);
+
+		try (OutputStream os = con.getOutputStream()) {
+			System.out.println(constructUrl.postBodyUrlConstructor());
+			byte[] inputs = constructUrl.postBodyUrlConstructor().getBytes("UTF-8");
+			os.write(inputs);
+			os.flush();
+		}
+		con.connect();
+		Thread.sleep(5000);
+		if (con.getResponseCode() == 200) {
+			BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+			while ((reader = br.readLine()) != null) {
+				sb.append(reader);
+			}
+			br.close();
+		} else {
+			System.out.println(con.getResponseCode());
+			BufferedReader br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
+			while ((reader = br.readLine()) != null) {
+				sb.append(reader);
+			}
+			br.close();
+		}
+		System.out.println("Post Call Response : " + sb.toString());
+		return sb.toString();
+	}
+
+	public static String postMakeConnection(String model, String input) throws IOException, InterruptedException {
+		StringBuilder sb = new StringBuilder();
+		String reader = "";
+		URL url = new URL(Configuration.pro.getProperty("url"));
+		System.out.println("Url : " + url);
+		HttpURLConnection con = (HttpURLConnection) url.openConnection();
+
+		con.setRequestMethod("POST");
+		con.setRequestProperty("Content-Type", Configuration.pro.getProperty("Content-Type"));
+		try {
+			con.setRequestProperty("Authorization", Configuration.pro.getProperty("Authorization"));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		con.setDoOutput(true);
+
+		try (OutputStream os = con.getOutputStream()) {
+			System.out.println(constructUrl.chatGptInputUrlConstruct(model, input));
+			byte[] inputs = constructUrl.chatGptInputUrlConstruct(model, input).getBytes("UTF-8");
+			os.write(inputs);
+			os.flush();
+		}
+		con.connect();
+		Thread.sleep(5000);
+		if (con.getResponseCode() == 200) {
+			BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+			while ((reader = br.readLine()) != null) {
+				sb.append(reader);
+			}
+			br.close();
+		} else {
+			System.out.println(con.getResponseCode());
+			BufferedReader br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
+			while ((reader = br.readLine()) != null) {
+				sb.append(reader);
+			}
+			br.close();
+		}
+		System.out.println("Post Call Response : " + sb.toString());
+		return sb.toString();
+	}
+
+	public static String putMakeConnection() throws IOException {
 		StringBuilder sb = new StringBuilder();
 		String reader = "";
 		URL url = new URL(Configuration.pro.getProperty("url"));
@@ -45,13 +131,13 @@ public class ApiConnections {
 		System.out.println("Url : " + url);
 		HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
-		con.setRequestMethod("POST");
+		con.setRequestMethod("PUT");
 		con.setRequestProperty("Content-Type", Configuration.pro.getProperty("Content-Type"));
 		con.setDoOutput(true);
 
 		try (OutputStream os = con.getOutputStream()) {
-			System.out.println(constructUrl.postBodyUrlConstructor());
-			byte[] input = constructUrl.postBodyUrlConstructor().getBytes("UTF-8");
+			System.out.println(constructUrl.putBodyUrlConstructor());
+			byte[] input = constructUrl.putBodyUrlConstructor().getBytes("UTF-8");
 			os.write(input);
 			os.flush();
 		}
@@ -70,7 +156,7 @@ public class ApiConnections {
 			}
 			br.close();
 		}
-		System.out.println("Post Call Response : " + sb.toString());
+		System.out.println("Put Call Response : " + sb.toString());
 		return sb.toString();
 	}
 

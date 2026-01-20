@@ -23,6 +23,9 @@ public class ExtentManager {
 
 			extent = new ExtentReports();
 			extent.attachReporter(spark);
+
+			extent.setSystemInfo("Automation Tester", "Manoj.kr");
+			extent.setSystemInfo("APITesting", "POST,PUT,PATCH,DELETE");
 		}
 		return extent;
 	}

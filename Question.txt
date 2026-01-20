@@ -1,0 +1,407 @@
+Certainly! Here's a comprehensive list of Java interview questions categorized by Core Java, OOPs, Collections, Exceptions, Java 8 features, and Multithreading:
+
+---
+
+### Core Java
+1. What are the main features of Java?
+2. Explain the difference between JDK, JRE, and JVM.
+3. What are the access modifiers available in Java?
+4. What is the difference between `==` and `.equals()` in Java?
+5. What are primitive data types in Java?
+6. How does Java achieve platform independence?
+7. What is a ClassLoader in Java?
+8. Explain the role of the `final` keyword in Java.
+9. What is the difference between `String`, `StringBuilder`, and `StringBuffer`?
+10. What is autoboxing and unboxing in Java?
+
+---
+
+### OOP Concepts
+1. What are the four basic principles of OOP?
+2. Explain the difference between method overloading and method overriding.
+3. What is encapsulation and how is it achieved in Java?
+4. What is inheritance? How is it implemented in Java?
+5. What is polymorphism? Difference between compile-time and runtime polymorphism?
+6. What is abstraction and how can it be implemented in Java?
+7. What are abstract classes and interfaces? When would you use one over the other?
+8. Can a class implement multiple interfaces? What about extending multiple classes?
+9. What is the difference between `super` and `this` keywords?
+10. Explain the concept of a constructor and how constructor chaining works.
+
+---
+
+### Collections Framework
+1. What are the main interfaces in the Java Collections Framework?
+2. What is the difference between `ArrayList` and `LinkedList`?
+3. How does `HashMap` work internally in Java?
+4. What is the difference between `HashMap` and `Hashtable`?
+5. What is the difference between `HashSet` and `TreeSet`?
+6. How do you iterate over a collection in Java?
+7. What is fail-fast behavior in collections? Which collections have it?
+8. How does `ConcurrentHashMap` differ from `HashMap`?
+9. Explain the differences between `Comparable` and `Comparator`.
+10. What are the main methods provided by the `Iterator` interface?
+
+---
+
+### Exceptions
+1. What is the difference between checked and unchecked exceptions?
+2. Explain the try-catch-finally block.
+3. What is the purpose of the `throw` and `throws` keywords?
+4. Can a try block exist without a catch block?
+5. What is exception propagation in Java?
+6. How do you create a custom exception in Java?
+7. What is the difference between `Error` and `Exception`?
+8. Explain the difference between `RuntimeException` and `IOException`.
+9. What happens if an exception is thrown in the constructor?
+10. What is the difference between `final`, `finally`, and `finalize`?
+
+---
+
+### Java 8 Features
+1. What new features were introduced in Java 8?
+2. Explain lambda expressions and provide a basic example.
+3. What is the purpose of the `FunctionalInterface` annotation?
+4. What is a stream in Java 8? How is it different from a collection?
+5. Explain the difference between `map` and `flatMap` in streams.
+6. What are default methods in interfaces?
+7. How do you use the `Optional` class to avoid `NullPointerException`?
+8. Explain method references with an example.
+9. What is the difference between `filter`, `map`, and `reduce` operations in streams?
+10. How can you create your own functional interface?
+
+---
+
+### Multithreading
+1. What is the difference between a process and a thread?
+2. How do you create a thread in Java?
+3. What is the difference between `Runnable` and `Callable`?
+4. Explain thread lifecycle.
+5. What is synchronization and why is it needed?
+6. How does the `synchronized` keyword work?
+7. What are volatile variables? When would you use them?
+8. What is a deadlock? How can it be prevented?
+9. What is the difference between `wait()` and `sleep()` methods?
+10. Explain the role of `ExecutorService` and how thread pools work.
+
+---
+
+If you want, I can also provide detailed answers or code examples for any of these questions!Certainly! Here is a comprehensive list of Selenium WebDriver interview questions covering the topics you specified:
+
+---
+
+### **Locators**
+
+1. What are the different types of locators available in Selenium WebDriver?
+2. How do you decide which locator to use in your script?
+3. What is the difference between `findElement()` and `findElements()` methods?
+4. How can you create a dynamic XPath or CSS selector? Can you give an example?
+5. Explain the difference between absolute and relative XPath.
+6. What are some advantages of CSS selectors over XPath?
+
+---
+
+### **Waits**
+
+7. What is the difference between implicit wait and explicit wait in Selenium WebDriver?
+8. How does FluentWait differ from Explicit Wait?
+9. How do you handle situations where an element takes a long time to appear on the web page?
+10. What exceptions can you handle using waits?
+11. Can you write a sample code snippet to use explicit wait for an element to be clickable?
+
+---
+
+### **Alerts**
+
+12. How do you handle JavaScript alerts in Selenium?
+13. What methods are available in the `Alert` interface and what do they do?
+14. How can you get the alert text and verify it?
+15. How do you handle prompt alerts that require input text?
+16. What happens if you try to interact with an alert without switching to it?
+
+---
+
+### **Frames**
+
+17. What is a frame/iframe? Why do you need to switch to a frame in Selenium?
+18. How do you switch to a frame by index, name, or WebElement?
+19. How can you switch back to the main document from a frame?
+20. What challenges can arise when working with nested frames?
+
+---
+
+### **Windows**
+
+21. How do you handle multiple browser windows or tabs in Selenium WebDriver?
+22. How can you switch between windows using their window handles?
+23. How do you close a specific browser window and switch back to the main window?
+24. How do you get the title of the current and all browser windows?
+
+---
+
+### **Actions Class**
+
+25. What is the purpose of the Actions class in Selenium WebDriver?
+26. How do you perform a mouse hover action using Actions class?
+27. Describe how you can perform drag and drop using Actions class.
+28. How do you perform a double click or right click on an element?
+29. Can you chain multiple actions? Provide an example.
+
+---
+
+### **JavascriptExecutor**
+
+30. What is the JavascriptExecutor interface and when would you use it?
+31. How do you execute JavaScript code to scroll a page in Selenium?
+32. How can you click on an element using JavascriptExecutor?
+33. Write a sample code to retrieve the title of the page using JavascriptExecutor.
+34. How can you set the value of a textbox using JavascriptExecutor?
+
+---
+
+### **Page Object Model (POM)**
+
+35. What is the Page Object Model (POM) design pattern and why is it useful?
+36. How do you implement POM in Selenium with an example?
+37. What are the benefits of using POM in automated tests?
+38. How can you handle page objects for dynamic web pages?
+39. How is POM different from other design patterns in automation?
+
+---
+
+### **Selenium Grid**
+
+40. What is Selenium Grid and why is it used?
+41. How do you configure Selenium Grid for parallel test execution?
+42. What are the roles of Hub and Node in Selenium Grid?
+43. How can you specify browser and platform capabilities for nodes in Selenium Grid?
+44. Can Selenium Grid support cross-browser testing? How?
+45. What is the difference between Selenium Grid 3 and Selenium Grid 4?
+
+---
+
+If you want, I can also provide detailed answers or code examples for any of these questions!Certainly! Here is a list of TestNG interview questions categorized by the topics you requested: annotations, assertions, DataProvider, testng.xml, parallel execution, and listeners.
+
+---
+
+## TestNG Interview Questions
+
+### 1. Annotations
+- What is TestNG and how are annotations used in it?
+- Explain the difference between `@BeforeSuite`, `@BeforeTest`, `@BeforeClass`, and `@BeforeMethod`.
+- When would you use `@BeforeGroups` and `@AfterGroups` annotations?
+- Can multiple methods have the same annotation in a TestNG class? How does TestNG decide the execution order?
+- How do you disable a test method using TestNG annotations?
+- What is the purpose of the `@Factory` annotation?
+
+### 2. Assertions
+- What is the role of assertions in TestNG? Name some common assertion methods.
+- How do hard assertions differ from soft assertions in TestNG?
+- How do you implement soft assertions in TestNG?
+- What will happen if an assertion fails in the middle of a test method?
+- How do you assert that an exception is thrown in TestNG?
+
+### 3. DataProvider
+- What is the DataProvider annotation and why is it used?
+- How do you write a method annotated with `@DataProvider`? Show an example.
+- How can you pass parameters from the DataProvider to a test method?
+- Can a DataProvider be defined in a different class? How do you reference it?
+- How does TestNG handle multiple sets of data provided by a DataProvider?
+
+### 4. testng.xml
+- What is the role of the testng.xml file?
+- How do you configure multiple test classes and groups within testng.xml?
+- How can you include or exclude test methods or groups via testng.xml?
+- Explain how parameters can be passed through testng.xml to test methods.
+- How do you set suite-level and test-level configurations in testng.xml?
+
+### 5. Parallel Execution
+- What types of parallel execution are supported in TestNG?
+- How do you enable parallel execution in the testng.xml file?
+- What are the potential issues you might face when running tests in parallel and how to resolve them?
+- How can you run multiple instances of the same test class in parallel with different data sets?
+- How does thread safety affect test design in parallel execution mode?
+
+### 6. Listeners
+- What are TestNG listeners?
+- Explain commonly used TestNG listeners like `IInvokedMethodListener`, `ITestListener`, `ISuiteListener`.
+- How do you implement and register a listener in your TestNG tests?
+- What is the use of the `onTestFailure` method in a listener?
+- Can listeners modify the execution flow of tests? Explain with an example.
+
+---
+
+If you'd like, I can also provide detailed answers or code samples for any of these questions!Certainly! Here’s a set of Maven interview questions covering **pom.xml structure**, **dependencies**, **build lifecycle**, **profiles**, and **Surefire/Failsafe plugins**:
+
+---
+
+### 1. **pom.xml Structure**
+
+- What is the purpose of the `pom.xml` file in a Maven project?
+- Can you explain the main elements of a `pom.xml` file?
+- What is the difference between `<groupId>`, `<artifactId>`, and `<version>` in `pom.xml`?
+- What are `<parent>` and `<modules>` elements used for in `pom.xml`?
+- How does the `<properties>` tag work in `pom.xml` and why is it useful?
+- What is the `<build>` section in `pom.xml` used for?
+
+---
+
+### 2. **Dependencies**
+
+- How do you declare a dependency in `pom.xml`?
+- What is the difference between `compile`, `provided`, `runtime`, `test`, and `system` scopes?
+- What happens if a dependency has transitive dependencies?
+- How do you exclude a transitive dependency in Maven?
+- What are dependency management and dependency mediation in Maven?
+- How can you manage conflicting dependency versions?
+- What is the difference between `<dependencyManagement>` and `<dependencies>`?
+
+---
+
+### 3. **Build Lifecycle**
+
+- Can you explain the Maven build lifecycle?
+- What are the three built-in lifecycles in Maven, and what are their phases?
+- What is the difference between the `validate`, `compile`, `test`, `package`, `verify`, `install`, and `deploy` phases?
+- How do plugins relate to lifecycle phases in Maven?
+- How can you bind a Maven plugin goal to a specific lifecycle phase?
+- What is the role of the `default` lifecycle?
+- How can you skip tests during the build?
+
+---
+
+### 4. **Profiles**
+
+- What is a Maven profile and why would you use one?
+- How do you define a profile in `pom.xml`?
+- How can profiles be activated?
+- What is a typical use case for Maven profiles?
+- Can you activate a profile from the command line? How?
+- How can profiles change dependency versions or plugin configurations?
+
+---
+
+### 5. **Surefire/Failsafe Plugins**
+
+- What is the purpose of the Maven Surefire plugin?
+- What is the difference between the Surefire and Failsafe plugins?
+- When should you use the Maven Failsafe plugin?
+- How do you configure Surefire to include or exclude certain tests?
+- How do Surefire and Failsafe handle test failures differently?
+- How can you run integration tests with Maven using these plugins?
+- How do you skip tests using the Surefire plugin configuration?
+
+---
+
+If you want, I can also provide **sample answers** or **explanations** for any of these questions!Certainly! Here is a comprehensive list of API testing interview questions categorized by key topics, including REST principles, HTTP methods, status codes, authentication, request/response validation, and Rest Assured:
+
+---
+
+### REST Principles
+1. **What are the key constraints of REST architecture?**  
+2. **Explain what statelessness means in RESTful services.**  
+3. **What is the role of resource URIs in REST?**  
+4. **How do you design RESTful APIs to be scalable and maintainable?**  
+5. **What is the difference between REST and SOAP APIs?**  
+6. **Explain the concept of HATEOAS in REST.**  
+
+### HTTP Methods
+1. **What are the most commonly used HTTP methods in REST APIs and their purposes?**  
+2. **When would you use PUT vs POST?**  
+3. **What is the difference between PATCH and PUT methods?**  
+4. **Can you explain the usage of the DELETE method and its idempotency?**  
+5. **How are HTTP OPTIONS requests used in REST?**  
+6. **What method would you use for retrieving data without any side effects?**  
+
+### HTTP Status Codes
+1. **What do the HTTP status codes 200, 201, 204, 400, 401, 403, 404, and 500 signify?**  
+2. **What is the difference between 401 Unauthorized and 403 Forbidden?**  
+3. **Which status code would you expect after creating a resource successfully?**  
+4. **What does the 429 status code imply and how is it handled?**  
+5. **Explain idempotency and how status codes relate to idempotent HTTP methods.**  
+
+### Authentication & Authorization  
+1. **What are common authentication methods used in REST APIs?**  
+2. **How does Basic Authentication work and what are its drawbacks?**  
+3. **Explain OAuth 2.0 and how it is used for API security.**  
+4. **What is the difference between authentication and authorization?**  
+5. **How do you test APIs secured with JWT tokens?**  
+6. **How can API keys be passed and validated during testing?**  
+
+### Request and Response Validation  
+1. **What is schema validation and why is it important in API testing?**  
+2. **How do you validate JSON responses in API testing?**  
+3. **Explain how you would validate headers in an HTTP response.**  
+4. **How do you test negative scenarios like invalid input or missing parameters?**  
+5. **What tools or methods do you use to verify the response time of an API?**  
+6. **Explain how you test the pagination or filtering features of an API.**  
+
+### Rest Assured Specific  
+1. **What is Rest Assured and why is it widely used for API testing?**  
+2. **How do you set up a basic GET request test using Rest Assured?**  
+3. **How can you validate status codes and response payload in Rest Assured?**  
+4. **Explain how to add headers and query parameters in Rest Assured requests.**  
+5. **How do you handle authentication (e.g., Basic Auth, OAuth2) using Rest Assured?**  
+6. **Demonstrate how to validate JSON schemas using Rest Assured.**  
+7. **How can you extract data from the response for chaining multiple API calls in Rest Assured?**  
+8. **What logging options does Rest Assured provide to debug request/response?**  
+
+---
+
+If you want, I can also provide sample answers or coding examples for any of these questions!Sure! To tailor the questions appropriately, could you please specify which technologies you'd like me to create basic, intermediate, and advanced-level questions for? For example, are you interested in programming languages like Python or JavaScript, cloud technologies like AWS or Azure, or something else?Certainly! Here’s a set of mixed theoretical, scenario-based, and practical questions focused on real-world automation framework design and best practices:
+
+### Theoretical Questions
+
+1. **What are the key components of a robust test automation framework?**  
+2. **Explain the differences between data-driven, keyword-driven, and hybrid test automation frameworks. When should each be used?**  
+3. **What are the benefits of using page object model (POM) in automation?**  
+4. **How do you handle synchronization issues in an automated test suite?**  
+5. **What role does continuous integration (CI) play in test automation, and how can automated tests be effectively integrated into a CI/CD pipeline?**
+
+### Scenario-Based Questions
+
+6. **Your automation suite is taking too long to run after the addition of numerous test cases, causing delays in the deployment pipeline. What strategies would you use to optimize execution time?**  
+7. **A new team member has to maintain your existing automation framework but has limited knowledge of the tools used. How would you design or improve your framework to be more maintainable and readable?**  
+8. **You encounter flaky tests that intermittently fail without code changes. What steps would you take to diagnose and fix these issues?**  
+9. **Your application frequently changes UI elements, causing locators in your automation scripts to break often. How would you design your framework to reduce maintenance effort caused by UI changes?**  
+10. **You need to automate tests for a legacy system that does not have a modern API nor conventional UI elements. What approach and tools might you consider?**
+
+### Practical Questions
+
+11. **Write a small code snippet demonstrating how you would implement the Page Object Model for a login page using Selenium WebDriver and Java/Python.**  
+12. **How would you implement cross-browser testing in your framework? Provide a brief example or outline the approach.**  
+13. **Describe how you would set up test data management within your automation framework to handle different environments (e.g., QA, staging, production).**  
+14. **Demonstrate how you would integrate logging and reporting into your automation framework. Provide examples of tools or libraries you might use.**  
+15. **Explain how you would design your framework to support parallel test execution and what challenges you might face.**
+
+---
+
+If you want, I can provide answers to any of these questions, sample code examples, or further explanations!1. Can you describe your experience with different QA automation tools and frameworks? Which ones have you used extensively?
+
+2. How do you design and develop automated test scripts to ensure maximum coverage and maintainability?
+
+3. What programming languages are you proficient in for automation scripting, and how have you applied them in your past projects?
+
+4. Explain the process you follow for integrating automated tests into a CI/CD pipeline.
+
+5. How do you handle flaky or intermittent test failures in your automation suite?
+
+6. Can you discuss a challenging bug or issue you discovered through automated testing and how you resolved it?
+
+7. What strategies do you use to keep your automated test suites running efficiently and reduce execution time?
+
+8. How do you approach test data management in automation testing?
+
+9. Describe your experience with API automation testing. What tools and techniques do you prefer?
+
+10. Have you worked with BDD frameworks like Cucumber or SpecFlow? If so, explain how you implemented them.
+
+11. How do you ensure that your automated tests are maintainable and easy for other team members to understand?
+
+12. What metrics do you track to measure the effectiveness of your automation efforts?
+
+13. Describe your experience with cross-browser and cross-platform automation testing.
+
+14. How do you stay updated with the latest trends and advancements in QA automation?
+
+15. Can you provide an example where you improved the automation process or framework in your previous role?

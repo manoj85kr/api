@@ -37,4 +37,12 @@ public class constructUrl {
 		reqbody.setName("Apple MacBook Pro 16 (Updated Name as : Manoj)");
 		return mapper.writeValueAsString(reqbody);
 	}
+
+	public static String chatGptInputUrlConstruct(String model, String input) throws JsonProcessingException {
+		chatGptReq req = new chatGptReq();
+		ObjectMapper mapper = new ObjectMapper();
+		req.setInput(input);
+		req.setModel(model);
+		return mapper.writeValueAsString(req);
+	}
 }

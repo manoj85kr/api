@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import com.api.extractor.Chat;
 import com.api.extractor.product;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -91,6 +92,15 @@ public class jsonResp {
 		} catch (NullPointerException e) {
 			e.printStackTrace();
 		}
+		return jsonParams;
+	}
+
+	public static Map<String, String> chatExtract(String values) throws JsonMappingException, JsonProcessingException {
+		ObjectMapper mapper = new ObjectMapper();
+		Chat chat = mapper.readValue(values, Chat.class);
+		Map<String, String> jsonParams = new LinkedHashMap<>();
+		jsonParams.put("Status", chat.getoutput().get(0).getStatus());
+		jsonParams.put("text", chat.getoutput().get(0).getContent().get(0).getText());
 		return jsonParams;
 	}
 }
