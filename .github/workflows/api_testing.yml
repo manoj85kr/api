@@ -30,7 +30,7 @@ jobs:
       - name: Build with Maven
         run: mvn clean test
         env:
-          OPENAI_API_KEY: '${{ secrets.AUTHORIZATION }}'
+          OPENAI_API_KEY: '${{ secrets.OPENAI_API_KEY  }}'
       - name: Debug – find extent report
         if: always()
         run: |

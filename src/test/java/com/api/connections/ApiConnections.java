@@ -82,6 +82,7 @@ public class ApiConnections {
 
 	public static String postMakeConnection(String model, String input) throws IOException, InterruptedException {
 		StringBuilder sb = new StringBuilder();
+		String apiKey = System.getenv("OPENAI_API_KEY");
 		String reader = "";
 		URL url = new URL(Configuration.pro.getProperty("url"));
 		System.out.println("Url : " + url);
@@ -90,8 +91,12 @@ public class ApiConnections {
 		con.setRequestMethod("POST");
 		con.setRequestProperty("Content-Type", Configuration.pro.getProperty("Content-Type"));
 		try {
-			//con.setRequestProperty("Authorization", Configuration.pro.getProperty("Authorization"));
-			con.setRequestProperty("Authorization", "Bearer " + System.getenv("AUTHORIZATION"));
+			if (apiKey == null || apiKey.isEmpty()) {
+				throw new RuntimeException("OPENAI_API_KEY is not set");
+			}
+			// con.setRequestProperty("Authorization",
+			// Configuration.pro.getProperty("Authorization"));
+			con.setRequestProperty("Authorization", "Bearer " + apiKey);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
