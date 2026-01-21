@@ -25,6 +25,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 
 public class Execution extends BaseTest {
 	String id = "";
+	String responseString = "";
 
 	@Test(priority = 1, enabled = false)
 	public void postConnection()
@@ -72,15 +73,40 @@ public class Execution extends BaseTest {
 			throws JsonMappingException, JsonProcessingException, IOException, InterruptedException {
 		String response = "";
 		ExtentTest test = extent.createTest("ChatGpt Post Connection Test");
+		test.log(Status.INFO, "Test started");
+		if (values[0] != null && values[1] != null && values[2] != null && values[3] != null) {
+			System.out.println("values[1].toString()" + values[1].toString());
+			if (values[1].toString().toLowerCase().equalsIgnoreCase("Y")) {
+				System.out.println("**********************Test Case_" + values[0] + "*********************");
+				response = jsonResp
+						.chatExtract(ApiConnections.postMakeConnection(values[2].toString(), values[3].toString()))
+						.get("text");
+				chatGptPostConnectionForAnswer(response);
+				// System.out.println(response);
+				// responseString = response;
+				// writeFile(response);
+				test.log(Status.INFO, "Test Passed");
+				System.out.println(
+						"***************************Test Case_" + values[0].toString() + "Ended *********************");
+			} else {
+				System.out.println("**********************Test Case_" + values[0].toString()
+						+ "Not Executed *********************");
+			}
+		}
+
+	}
+
+	public void chatGptPostConnectionForAnswer(String response)
+			throws JsonMappingException, JsonProcessingException, IOException, InterruptedException {
+		ExtentTest test = extent.createTest("ChatGpt Post Connection Test");
 		System.out.println("**********************Start of ChatGpt Post api*********************");
 		test.log(Status.INFO, "Test started");
-		if (values[2] != null && values[3] != null) {
-			response = jsonResp
-					.chatExtract(ApiConnections.postMakeConnection(values[2].toString(), values[3].toString()))
-					.get("text");
+		String[] text = Utilities.textExtraction(response).split("\n");
+		for (String question : text) {
+			response = jsonResp.chatExtract(ApiConnections.postMakeConnection("gpt-4.1-mini", question)).get("text");
+			writeFile(response);
+			Thread.sleep(30000);
 		}
-		System.out.println(response);
-		writeFile(response);
 		test.log(Status.INFO, "Test Passed");
 		System.out.println("************************End of ChatGpt Post api*********************");
 	}
@@ -108,7 +134,7 @@ public class Execution extends BaseTest {
 			if (row == null) {
 				continue;
 			}
-			for (int j = 1; j < ColumnCount; j++) {
+			for (int j = 0; j < ColumnCount; j++) {
 				Cell cell = row.getCell(j, Row.MissingCellPolicy.CREATE_NULL_AS_BLANK);
 				values[i - 1][j] = cell.toString();
 			}

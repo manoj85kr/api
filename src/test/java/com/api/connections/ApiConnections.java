@@ -94,8 +94,6 @@ public class ApiConnections {
 			if (apiKey == null || apiKey.isEmpty()) {
 				throw new RuntimeException("OPENAI_API_KEY is not set");
 			}
-			// con.setRequestProperty("Authorization",
-			// Configuration.pro.getProperty("Authorization"));
 			con.setRequestProperty("Authorization", "Bearer " + apiKey);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
