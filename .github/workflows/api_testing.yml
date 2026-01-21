@@ -7,7 +7,7 @@ name: CI Pipeline - API Tests
     branches:
       - main
   schedule:
-    - cron: 30 3 * * *
+    - cron: 30 3 * * 1
   workflow_dispatch: null
 jobs:
   run-tests:
