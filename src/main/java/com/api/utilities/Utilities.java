@@ -1,8 +1,15 @@
 package com.api.utilities;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
@@ -30,5 +37,16 @@ public class Utilities {
 			sb.append(matcher.group() + "\n");
 		}
 		return sb.toString();
+	}
+
+	public static void writeDataInTextFile(String fileContent) throws IOException {
+		File file = new File(System.getProperty("user.dir") + File.separator + "gitLabQuestions.txt");
+		if (!file.exists()) {
+			file.createNewFile();
+		}
+		try (BufferedWriter bw = new BufferedWriter(new FileWriter(file, true))) {
+			bw.newLine();
+			bw.write(fileContent);
+		}
 	}
 }

@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Map;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -16,6 +17,7 @@ import org.testng.annotations.Test;
 
 import com.api.base.BaseTest;
 import com.api.connections.ApiConnections;
+import com.api.connections.gitHubApiConnection;
 import com.api.jsonresponse.jsonResp;
 import com.api.utilities.Utilities;
 import com.aventstack.extentreports.ExtentTest;
@@ -68,7 +70,7 @@ public class Execution extends BaseTest {
 		System.out.println("************************End of Delete api*********************");
 	}
 
-	@Test(priority = 5, dataProvider = "excelData")
+	@Test(priority = 5, dataProvider = "excelData", enabled = false)
 	public void chatGptPostConnection(Object[] values)
 			throws JsonMappingException, JsonProcessingException, IOException, InterruptedException {
 		String response = "";
@@ -82,9 +84,6 @@ public class Execution extends BaseTest {
 						.chatExtract(ApiConnections.postMakeConnection(values[2].toString(), values[3].toString()))
 						.get("text");
 				chatGptPostConnectionForAnswer(response);
-				// System.out.println(response);
-				// responseString = response;
-				// writeFile(response);
 				test.log(Status.INFO, "Test Passed");
 				System.out.println(
 						"***************************Test Case_" + values[0].toString() + "Ended *********************");
@@ -93,7 +92,6 @@ public class Execution extends BaseTest {
 						+ "Not Executed *********************");
 			}
 		}
-
 	}
 
 	public void chatGptPostConnectionForAnswer(String response)
@@ -143,5 +141,4 @@ public class Execution extends BaseTest {
 		fis.close();
 		return values;
 	}
-
 }

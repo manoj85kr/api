@@ -6,7 +6,7 @@
     <listener class-name="com.api.listener.ExtentListener" />
 </listeners>
     <classes>
-      <class name="com.api.git.Execution"/>
+      <class name="com.api.git.gitHubExecution" />
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

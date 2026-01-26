@@ -1,5 +1,11 @@
 package com.api.requestbodystruct;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.api.configuration.Configuration;
+import com.api.requestUrlConstruct.githubUrl;
+import com.api.requestUrlConstruct.messages;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -44,5 +50,20 @@ public class constructUrl {
 		req.setInput(input);
 		req.setModel(model);
 		return mapper.writeValueAsString(req);
+	}
+
+	public static String githubConstructUrl(String question) throws JsonProcessingException {
+		List<messages> messageList = new ArrayList<>();
+		githubUrl giturl = new githubUrl();
+		ObjectMapper mapper = new ObjectMapper();
+		messages messages = new messages();
+		giturl.setModel("gpt-4.1-mini");
+		giturl.setMax_tokens(Integer.parseInt(Configuration.pro.getProperty("token")));
+		giturl.setTemperature(Double.parseDouble(Configuration.pro.getProperty("temperature")));
+		messages.setContent(question);
+		messages.setRole("user");
+		messageList.add(messages);
+		giturl.setMessages(messageList);
+		return mapper.writeValueAsString(giturl);
 	}
 }

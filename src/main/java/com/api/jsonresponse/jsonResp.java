@@ -1,11 +1,10 @@
 package com.api.jsonresponse;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
-
 import com.api.extractor.Chat;
 import com.api.extractor.product;
+import com.api.requestbodystruct.githubRoot;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -101,6 +100,14 @@ public class jsonResp {
 		Map<String, String> jsonParams = new LinkedHashMap<>();
 		jsonParams.put("Status", chat.getoutput().get(0).getStatus());
 		jsonParams.put("text", chat.getoutput().get(0).getContent().get(0).getText());
+		return jsonParams;
+	}
+
+	public static Map<String, String> githubExtract(String values)
+			throws JsonMappingException, JsonProcessingException {
+		githubRoot github = mapper.readValue(values, githubRoot.class);
+		Map<String, String> jsonParams = new LinkedHashMap<>();
+		jsonParams.put("content", github.getChoices().get(0).getMessage().getContent());
 		return jsonParams;
 	}
 }

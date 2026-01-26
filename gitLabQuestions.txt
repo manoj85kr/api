@@ -1,0 +1,865 @@
+
+Certainly! Here are Java interview questions covering Core Java, OOPs, Collections, Exceptions, Java 8, and Multithreading, each with their answers:
+
+---
+
+### Core Java
+
+1. **What are the main features of Java?**  
+   **Answer:**  
+   - Platform Independent (Write Once, Run Anywhere)  
+   - Object-Oriented  
+   - Simple and Familiar  
+   - Secure  
+   - Robust (automatic memory management, exception handling)  
+   - Multithreaded  
+   - Architecture Neutral  
+   - Portable  
+   - High Performance (via Just-In-Time compiler)  
+   - Distributed  
+   - Dynamic and Extensible
+
+2. **What is the difference between JDK, JRE, and JVM?**  
+   **Answer:**  
+   - **JVM (Java Virtual Machine):** Runs Java bytecode; platform-dependent; part of JRE.  
+   - **JRE (Java Runtime Environment):** JVM + Libraries + other files to run Java applications.  
+   - **JDK (Java Development Kit):** JRE + development tools (compiler, debugger, etc.).
+
+---
+
+### OOPs Concepts
+
+3. **What are the four pillars of Object-Oriented Programming?**  
+   **Answer:**  
+   - **Encapsulation:** Wrapping data and methods together.  
+   - **Inheritance:** Acquiring properties and behavior from parent class.  
+   - **Polymorphism:** Many forms; ability to take multiple forms (method overloading and overriding).  
+   - **Abstraction:** Hiding internal details and showing functionality only.
+
+4. **What is method overloading and method overriding?**  
+   **Answer:**  
+   - **Method Overloading:** Multiple methods in same class with same name but different parameters.  
+   - **Method Overriding:** Subclass provides specific implementation of a method already defined in superclass.
+
+---
+
+### Collections
+
+5. **What is the difference between ArrayList and LinkedList?**  
+   **Answer:**  
+   - **ArrayList:** Uses dynamic array, fast random access (get), slow at insertion/deletion (except at end).  
+   - **LinkedList:** Uses doubly linked list, slower random access, but faster insertion/deletion compared to ArrayList.
+
+6. **What is the difference between HashMap and Hashtable?**  
+   **Answer:**  
+   - **HashMap:** Not synchronized, allows one null key and multiple null values.  
+   - **Hashtable:** Synchronized, does not allow null keys or null values.
+
+---
+
+### Exceptions
+
+7. **What is the difference between checked and unchecked exceptions?**  
+   **Answer:**  
+   - **Checked Exceptions:** Checked at compile time; must be handled (e.g., IOException).  
+   - **Unchecked Exceptions:** Runtime exceptions; not checked at compile time (e.g., NullPointerException).
+
+8. **How do you create a custom exception?**  
+   **Answer:**  
+   Create a class extending `Exception` (for checked) or `RuntimeException` (for unchecked):
+   ```java
+   public class MyCustomException extends Exception {
+       public MyCustomException(String message) {
+           super(message);
+       }
+   }
+   ```
+
+---
+
+### Java 8
+
+9. **What are the main features introduced in Java 8?**  
+   **Answer:**  
+   - Lambda Expressions  
+   - Functional Interfaces  
+   - Streams API  
+   - Default and Static methods in interfaces  
+   - Optional class  
+   - Date and Time API (java.time package)
+
+10. **What is a lambda expression? Provide an example.**  
+    **Answer:**  
+    A lambda expression is a short block of code which takes parameters and returns a value.  
+    Example:  
+    ```java
+    // Before Java 8 (anonymous class)
+    Runnable r = new Runnable() {
+        public void run() {
+            System.out.println("Run");
+        }
+    };
+
+    // Using Lambda in Java 8
+    Runnable r = () -> System.out.println("Run");
+    ```
+
+11. **What is Stream API in Java 8?**  
+    **Answer:**  
+    Stream API provides a functional approach to processing collections of objects. It allows operations like filter, map, reduce, find, match, and sort. It supports lazy evaluation and parallel processing.
+
+---
+
+### Multithreading
+
+12. **What is the difference between `Thread` class and `Runnable` interface?**  
+    **Answer:**  
+    - Extending the `Thread` class: You override the `run()` method, but cannot extend any other class.  
+    - Implementing `Runnable` interface: You implement `run()` method, allows you to extend other classes, and separates task from thread.
+
+13. **What is synchronization and why is it important?**  
+    **Answer:**  
+    Synchronization is a mechanism to control access to shared resources by multiple threads to prevent data inconsistency or corruption. It ensures that only one thread can access the synchronized block/method at a time.
+
+14. **What is a deadlock? How can it be avoided?**  
+    **Answer:**  
+    Deadlock occurs when two or more threads are waiting for each other to release locks indefinitely.  
+    Avoidance techniques:  
+    - Avoid nested locks whenever possible.  
+    - Use a fixed order of acquiring locks.  
+    - Use timeout locks.  
+    - Use higher-level concurrency utilities (e.g., `java.util.concurrent` package).
+
+---
+
+If you need more questions or further explanations, feel free to ask!
+Certainly! Here are API testing interview questions covering REST principles, HTTP methods, status codes, authentication, request/response validation, and Rest Assured, each followed by its answer:
+
+---
+
+### 1. What are the main principles of REST architecture?
+
+**Answer:**  
+The main principles of REST (Representational State Transfer) include:  
+- **Statelessness:** Each request from client to server must contain all the information needed to understand and process the request. The server does not store client context between requests.  
+- **Client-Server Architecture:** The client and server are separate, and they interact through a uniform interface.  
+- **Uniform Interface:** Resources are identified in requests (typically via URIs), and interactions happen through standard HTTP methods (GET, POST, PUT, DELETE).  
+- **Cacheability:** Responses should be implicitly or explicitly labeled as cacheable or non-cacheable.  
+- **Layered System:** The architecture can be composed of hierarchical layers by constraining component behavior.  
+- **Code on Demand (optional):** Servers can temporarily extend or customize client functionality by transferring executable code.
+
+---
+
+### 2. What are the common HTTP methods used in RESTful APIs, and what do they do?
+
+**Answer:**  
+Common HTTP methods include:  
+- **GET:** Retrieve data from the server. Should be idempotent and safe (no side-effects).  
+- **POST:** Submit data to the server, often causing a change (create resource). Not idempotent.  
+- **PUT:** Update an existing resource or create if it does not exist. Idempotent.  
+- **DELETE:** Remove a resource. Idempotent.  
+- **PATCH:** Partially update a resource. Not necessarily idempotent.
+
+---
+
+### 3. What HTTP status codes are commonly returned by APIs, and what do they indicate?
+
+**Answer:**  
+- **200 OK:** The request succeeded.  
+- **201 Created:** A resource was successfully created.  
+- **204 No Content:** Request succeeded but no content to return (often for DELETE).  
+- **400 Bad Request:** The request is invalid or malformed.  
+- **401 Unauthorized:** Authentication is required or failed.  
+- **403 Forbidden:** Authentication succeeded but the client does not have permission.  
+- **404 Not Found:** Requested resource does not exist.  
+- **500 Internal Server Error:** Server encountered an error.
+
+---
+
+### 4. What types of authentication are commonly used in API testing?
+
+**Answer:**  
+Common authentication types include:  
+- **Basic Authentication:** Username and password encoded in Base64 and sent in headers.  
+- **Bearer Token Authentication:** Typically involves OAuth2 tokens in the Authorization header.  
+- **API Key:** Static key passed via headers, query parameters, or cookies.  
+- **OAuth:** Delegated authorization protocol, often using access tokens.  
+- **JWT (JSON Web Tokens):** Tokens containing claims and used for stateless authentication.
+
+---
+
+### 5. How do you validate request and response data in API testing?
+
+**Answer:**  
+Validation involves:  
+- **Schema Validation:** Ensuring the JSON or XML response adheres to a defined schema (e.g., JSON Schema).  
+- **Status Code Validation:** Verifying the response code matches expected codes.  
+- **Header Validation:** Checking headers like Content-Type, Cache-Control, Authorization.  
+- **Payload Content Validation:** Ensuring specific fields contain expected values or formats.  
+- **Performance Metrics:** Checking response time to meet SLA.  
+- **Error Handling:** Validating error messages and error codes when request fails.
+
+---
+
+### 6. What is Rest Assured, and why is it popular for API testing?
+
+**Answer:**  
+Rest Assured is a Java-based open-source library for testing and validating RESTful web services. It simplifies writing tests for APIs by providing a domain-specific language (DSL) for making HTTP requests, setting headers, parameters, parsing responses, and validating results. It integrates well with testing frameworks like JUnit and TestNG, supporting BDD-style testing and reducing boilerplate code.
+
+---
+
+### 7. How do you perform a GET request with Rest Assured and validate the status code?
+
+**Answer:**  
+Example code snippet:  
+```java
+given()
+    .when()
+    .get("https://api.example.com/users/1")
+    .then()
+    .statusCode(200);
+```
+This sends a GET request to the users endpoint and validates that the status code returned is 200 OK.
+
+---
+
+### 8. How can you extract data from a JSON response using Rest Assured?
+
+**Answer:**  
+You can extract data like this:  
+```java
+String username = given()
+    .when()
+    .get("https://api.example.com/users/1")
+    .then()
+    .statusCode(200)
+    .extract()
+    .path("username");
+```
+The `path()` method extracts the value of the JSON node `username` from the response.
+
+---
+
+### 9. How do you send a POST request with a JSON body using Rest Assured?
+
+**Answer:**  
+Example:  
+```java
+given()
+    .header("Content-Type", "application/json")
+    .body("{\"name\":\"John\", \"age\":30}")
+    .when()
+    .post("https://api.example.com/users")
+    .then()
+    .statusCode(201);
+```
+This sends a POST request with the JSON payload to create a new user.
+
+---
+
+### 10. How can you handle authentication headers in Rest Assured?
+
+**Answer:**  
+You can set authentication headers like this:  
+- **Basic Auth:**  
+```java
+given()
+    .auth()
+    .preemptive()
+    .basic("username", "password")
+    .when()
+    .get("https://api.example.com/secure-endpoint")
+    .then()
+    .statusCode(200);
+```
+- **Bearer Token:**  
+```java
+given()
+    .header("Authorization", "Bearer your_access_token")
+    .when()
+    .get("https://api.example.com/secure-endpoint")
+    .then()
+    .statusCode(200);
+```
+
+---
+
+### 11. Explain the difference between PUT and PATCH methods. When would you use each?
+
+**Answer:**  
+- **PUT:** Used to update the entire resource or create it if not present. It is idempotent — sending the same PUT multiple times will result in the same resource state.  
+- **PATCH:** Used to partially update a resource, sending only changes rather than the full object. Not necessarily idempotent.  
+Use PUT when you need to replace the entire resource, and PATCH when you want to update only specific fields.
+
+---
+
+### 12. How can you validate JSON schema using Rest Assured?
+
+**Answer:**  
+Rest Assured integrates with JSON Schema Validator:  
+```java
+given()
+    .when()
+    .get("/user/1")
+    .then()
+    .assertThat()
+    .body(matchesJsonSchemaInClasspath("user-schema.json"));
+```
+This validates that the response body matches the predefined JSON schema stored under classpath.
+
+---
+
+### 13. How do you test negative scenarios in API testing?
+
+**Answer:**  
+Negative testing involves deliberately sending invalid or unexpected inputs to verify that the API handles errors gracefully. This includes:  
+- Sending invalid parameters or payloads.  
+- Omitting required headers or authentication tokens.  
+- Testing unauthorized access.  
+- Providing wrong HTTP methods for endpoints.  
+Expected outcomes are relevant error status codes (400, 401, 403, 404) and meaningful error messages.
+
+---
+
+### 14. What is idempotency in REST APIs, and why is it important?
+
+**Answer:**  
+Idempotency means making the same request multiple times results in the same effect as making it once. For example, multiple identical PUT or DELETE requests shouldn’t change the server state beyond the initial request. Idempotency is important to ensure reliability, especially when network issues may cause clients to retry requests.
+
+---
+
+### 15. How do you handle dynamic values (like timestamps, IDs) in response validation?
+
+**Answer:**  
+Handling dynamic values may include:  
+- Ignoring fields while validating others.  
+- Using partial matching or regular expressions for fields that change (e.g., timestamps).  
+- Extracting the dynamic values and using them in subsequent requests.  
+- Validating format rather than exact value (e.g., ISO 8601 date format).
+
+---
+
+These questions and answers cover key aspects of API testing in interviews, especially emphasizing REST principles and practical Rest Assured usage. Let me know if you want questions tailored to a specific experience level or additional topics!
+Certainly! Here are Selenium WebDriver interview questions covering locators, waits, alerts, frames, windows, Actions class, JavaScriptExecutor, POM, and Selenium Grid, each with an answer:
+
+---
+
+### 1. What are different types of locators available in Selenium WebDriver?  
+**Answer:**  
+Selenium WebDriver supports the following locators:  
+- **id**  
+- **name**  
+- **className**  
+- **tagName**  
+- **linkText**  
+- **partialLinkText**  
+- **cssSelector**  
+- **xpath**
+
+---
+
+### 2. When should you prefer CSS Selectors over XPath, and vice versa?  
+**Answer:**  
+- **CSS Selectors** are generally faster and more readable, preferred when elements can be easily targeted using class, id, or attribute selectors.  
+- **XPath** is more powerful and flexible, especially for navigating complex DOMs, selecting elements based on text content, or traversing the DOM hierarchy, but it can be slower.
+
+---
+
+### 3. What types of waits are available in Selenium WebDriver? Explain each briefly.  
+**Answer:**  
+- **Implicit Wait:** Set once for the WebDriver session; waits for a set amount of time before throwing an exception if element is not found.  
+- **Explicit Wait:** Waits for a specific condition to occur before proceeding, applied to specific elements using `WebDriverWait` and `ExpectedConditions`.  
+- **Fluent Wait:** Similar to explicit wait but allows polling frequency and ignoring specific exceptions.
+
+---
+
+### 4. How do you handle JavaScript alerts in Selenium WebDriver?  
+**Answer:**  
+You can switch to the alert and perform actions as follows:  
+```java
+Alert alert = driver.switchTo().alert();
+alert.accept();  // To click OK
+alert.dismiss(); // To click Cancel
+String alertText = alert.getText();  // To get text from alert
+alert.sendKeys("some text");  // To enter text into prompt alert
+```
+
+---
+
+### 5. How do you switch between frames in Selenium WebDriver?  
+**Answer:**  
+You can switch between frames using:  
+- `driver.switchTo().frame(int index);`  
+- `driver.switchTo().frame(String nameOrId);`  
+- `driver.switchTo().frame(WebElement frameElement);`  
+To switch back to the main content:  
+```java
+driver.switchTo().defaultContent();
+```
+
+---
+
+### 6. How can you switch between browser windows or tabs in Selenium WebDriver?  
+**Answer:**  
+You use `driver.getWindowHandles()` to get all window handles and `driver.switchTo().window(windowHandle)` to switch. Example:  
+```java
+String mainWindow = driver.getWindowHandle();  
+Set<String> allWindows = driver.getWindowHandles();  
+for (String window : allWindows) {  
+    if (!window.equals(mainWindow)) {  
+        driver.switchTo().window(window);  
+        // Perform actions on new window  
+    }  
+}  
+driver.switchTo().window(mainWindow);  // Switch back  
+```
+
+---
+
+### 7. What is the purpose of the Actions class in Selenium WebDriver? Give examples of its usage.  
+**Answer:**  
+Actions class is used to perform advanced user interactions such as mouse hover, double-click, right-click, drag-and-drop, and keyboard events. Example usage:  
+```java
+Actions actions = new Actions(driver);  
+actions.moveToElement(element).perform();  // Mouse hover  
+actions.doubleClick(element).perform();    // Double click  
+actions.contextClick(element).perform();   // Right click  
+actions.dragAndDrop(source, target).perform();  // Drag and drop  
+```
+
+---
+
+### 8. What is JavaScriptExecutor in Selenium, and when should you use it?  
+**Answer:**  
+JavaScriptExecutor is an interface used to execute JavaScript code in the context of the browser. It is useful when WebDriver does not provide direct support for certain operations like scrolling, clicking hidden elements, or getting browser information. Example:  
+```java
+JavascriptExecutor js = (JavascriptExecutor) driver;  
+js.executeScript("window.scrollBy(0,1000)");  // Scroll down  
+js.executeScript("arguments[0].click();", element);  // Click through JS  
+```
+
+---
+
+### 9. What is the Page Object Model (POM) and what are its advantages?  
+**Answer:**  
+POM is a design pattern that creates an object repository for web UI elements. Each page is represented as a class with locators and methods to interact with the page. Advantages:  
+- Improves code readability and maintainability  
+- Reduces code duplication  
+- Makes tests more reusable and manageable  
+- Enhances separation of test code and page-specific code
+
+---
+
+### 10. What is Selenium Grid and how does it help in test execution?  
+**Answer:**  
+Selenium Grid allows running tests on multiple machines and browsers in parallel, distributing tests across different environments to reduce execution time. It consists of:  
+- **Hub:** Central point to receive test requests  
+- **Nodes:** Machines that execute tests as per hub instructions  
+Advantages include parallel execution, cross-browser testing, and centralized management.
+
+---
+
+If you need questions on any specific topic in more detail, please let me know!
+Certainly! Here are some TestNG interview questions covering **annotations, assertions, DataProvider, testng.xml, parallel execution, and listeners**, along with their answers:
+
+---
+
+### 1. What is TestNG and how is it different from JUnit?
+
+**Answer:**  
+TestNG is a testing framework inspired by JUnit but introduces new functionalities such as annotations, flexible test configuration, support for data-driven testing, parallel execution, and detailed reports. Unlike JUnit, TestNG supports test grouping, sequencing, and parameterization more easily, and comes with built-in support for parallel test execution.
+
+---
+
+### 2. What are some commonly used TestNG annotations? Briefly explain each.
+
+**Answer:**  
+- `@BeforeSuite`: Runs once before all tests in the suite.  
+- `@AfterSuite`: Runs once after all tests in the suite.  
+- `@BeforeTest`: Runs before any test method belonging to the classes inside the <test> tag in testng.xml.  
+- `@AfterTest`: Runs after all the test methods in the <test> tag.  
+- `@BeforeClass`: Runs before the first method in the current class is invoked.  
+- `@AfterClass`: Runs after all the methods in the current class have run.  
+- `@BeforeMethod`: Runs before each test method.  
+- `@AfterMethod`: Runs after each test method.  
+- `@Test`: Marks a method as part of the test case.
+
+---
+
+### 3. How do TestNG assertions work? Give examples of commonly used assertions.
+
+**Answer:**  
+TestNG assertions verify expected outcomes against actual results in tests and throw exceptions when the verification fails, thus failing the test case. Examples:  
+- `Assert.assertEquals(actual, expected)`: Verifies if two values are equal.  
+- `Assert.assertTrue(condition)`: Verifies that a condition is true.  
+- `Assert.assertFalse(condition)`: Verifies that a condition is false.  
+- `Assert.assertNotNull(object)`: Checks if the object is not null.  
+- `Assert.fail(message)`: Fails the test with a message.
+
+---
+
+### 4. What is a DataProvider in TestNG and how do you use it?
+
+**Answer:**  
+A `@DataProvider` method in TestNG supplies data to a test method. It returns an `Object[][]` which contains multiple sets of parameters to run the test multiple times with different data.  
+Example usage:
+
+```java
+@DataProvider(name = "loginData")
+public Object[][] getData() {
+    return new Object[][] {
+        {"user1", "pass1"},
+        {"user2", "pass2"}
+    };
+}
+
+@Test(dataProvider = "loginData")
+public void testLogin(String username, String password) {
+   // test logic here
+}
+```
+
+---
+
+### 5. What is the purpose of the `testng.xml` file?
+
+**Answer:**  
+The `testng.xml` file is an XML configuration file that defines how tests are grouped and executed. It configures which classes, methods, or groups to run, their sequence, parallel execution options, parameters for methods, and listeners to attach. It provides centralized control over test execution.
+
+---
+
+### 6. How can you configure parallel test execution in TestNG?
+
+**Answer:**  
+Parallel execution can be configured in `testng.xml` by setting the `parallel` attribute in the `<suite>` or `<test>` tag. Possible values:  
+- `tests`: Runs test tags in parallel.  
+- `classes`: Run test classes in parallel.  
+- `methods`: Run test methods in parallel.  
+- `instances`: Run different instances of test classes in parallel.  
+Example:
+
+```xml
+<suite name="Suite" parallel="methods" thread-count="5">
+    <test name="Test">
+        <classes>
+            <class name="com.example.TestClass"/>
+        </classes>
+    </test>
+</suite>
+```
+
+---
+
+### 7. What are TestNG listeners and why are they used?
+
+**Answer:**  
+Listeners in TestNG are interfaces that allow you to modify the behavior of test execution by listening to events such as test start, success, failure, skip etc. They are used to perform actions like logging, reporting, or taking screenshots on test failure. Common listeners include `ITestListener`, `ISuiteListener`, and `IInvokedMethodListener`.
+
+---
+
+### 8. How do you implement a listener to capture test failures?
+
+**Answer:**  
+You implement the `ITestListener` interface and override the `onTestFailure` method:
+
+```java
+public class TestListener implements ITestListener {
+    @Override
+    public void onTestFailure(ITestResult result) {
+        System.out.println("Test failed: " + result.getName());
+        // Code to capture screenshot or log errors
+    }
+}
+```
+
+Then add this listener in `testng.xml` or via annotation `@Listeners(TestListener.class)`.
+
+---
+
+### 9. Can a test method have both `@Test` and `@DataProvider` annotations? How?
+
+**Answer:**  
+No, a test method itself doesn’t have `@DataProvider` annotation but uses it via the `dataProvider` attribute in the `@Test` annotation to receive data. The `@DataProvider` annotation marks a separate method that provides the data.
+
+---
+
+### 10. Explain how you can pass parameters from `testng.xml` to test methods.
+
+**Answer:**  
+Parameters can be defined in `testng.xml` within `<parameter>` tags, and the test method can accept them via the `@Parameters` annotation.  
+Example:
+
+```xml
+<test name="Test">
+    <parameter name="browser" value="chrome"/>
+    <classes>
+        <class name="com.example.TestClass"/>
+    </classes>
+</test>
+```
+
+```java
+@Parameters({"browser"})
+@Test
+public void testMethod(String browser) {
+    System.out.println("Browser is: " + browser);
+}
+```
+
+---
+
+Let me know if you want me to include coding exercises or more advanced questions!
+Certainly! Here are Maven interview questions along with their answers, covering **pom.xml structure, dependencies, build lifecycle, profiles, and Surefire/Failsafe plugins**:
+
+---
+
+### 1. What is the structure of a basic `pom.xml` file in Maven?
+
+**Answer:**  
+A basic `pom.xml` file consists of the following main elements:
+
+```xml
+<project xmlns="http://maven.apache.org/POM/4.0.0"  
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0  
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">  
+    <modelVersion>4.0.0</modelVersion>  
+    <groupId>com.example</groupId>  
+    <artifactId>my-app</artifactId>  
+    <version>1.0-SNAPSHOT</version>  
+    <packaging>jar</packaging>  
+
+    <name>My Application</name>  
+    <description>Example project</description>  
+
+    <!-- Dependencies -->  
+    <dependencies>  
+        <!--dependency elements-->  
+    </dependencies>  
+
+    <!-- Build, Plugins, Profiles etc. -->  
+</project>  
+```
+- `modelVersion`: POM model version (usually 4.0.0).
+- `groupId`: Identifier for the project group.
+- `artifactId`: Project name.
+- `version`: Project version.
+- `packaging`: Type of artifact (jar, war, pom).
+- Other optional elements include dependencies, build plugins, profiles, properties, etc.
+
+---
+
+### 2. How do you add a dependency in Maven and what are the key elements of a dependency?
+
+**Answer:**  
+A dependency is added inside the `<dependencies>` element as:
+
+```xml
+<dependencies>  
+    <dependency>  
+        <groupId>org.springframework</groupId>  
+        <artifactId>spring-core</artifactId>  
+        <version>5.3.10</version>  
+        <scope>compile</scope> <!-- Optional; default is compile -->  
+    </dependency>  
+</dependencies>
+```
+Key elements:  
+- `groupId`: The group or organization that produces the dependency.
+- `artifactId`: The name of the dependency artifact.
+- `version`: The version of the dependency.
+- `scope` (optional): Dependency scope (`compile`, `test`, `provided`, `runtime`, `system`).
+
+---
+
+### 3. Explain the Maven build lifecycle phases.
+
+**Answer:**  
+Maven has three built-in lifecycles — **default**, **clean**, and **site**. Each lifecycle consists of several phases:
+
+- **default (build)** lifecycle phases (commonly used):
+  - `validate`: Validate the project is correct.
+  - `compile`: Compile the source code.
+  - `test`: Run unit tests.
+  - `package`: Package compiled code in a distributable format (jar, war).
+  - `verify`: Run checks to verify package is valid.
+  - `install`: Install the package in the local repository.
+  - `deploy`: Copy the package to a remote repository for sharing.
+
+- **clean** lifecycle phases:
+  - `pre-clean`, `clean`, `post-clean`: Clean the project (remove target directory).
+
+- **site** lifecycle phases:
+  - `pre-site`, `site`, `post-site`, `site-deploy`: Generate project documentation.
+
+---
+
+### 4. What are Maven profiles and when would you use them?
+
+**Answer:**  
+Maven profiles are configurations that allow you to customize builds for different environments or situations (e.g., development, testing, production).
+
+Usage scenarios:
+- To change dependencies.
+- To set different plugin configurations.
+- To define environment-specific properties.
+- To build a project differently without changing the `pom.xml` directly.
+
+Profiles can be activated via:
+- Command line (`-P` flag).
+- Environment variables.
+- Operating system conditions.
+- File existence.
+
+Example profile snippet:
+
+```xml
+<profiles>  
+    <profile>  
+        <id>production</id>  
+        <activation>  
+            <property>  
+                <name>env</name>  
+                <value>prod</value>  
+            </property>  
+        </activation>  
+        <properties>  
+            <env.type>production</env.type>  
+        </properties>  
+    </profile>  
+</profiles>
+```
+
+---
+
+### 5. Differentiate between the Maven Surefire and Failsafe plugins.
+
+**Answer:**  
+- **Surefire Plugin** is used to run **unit tests** during the `test` phase of the build lifecycle. It runs tests typically annotated with JUnit or TestNG, matching test classes like `*Test.java` or `Test*.java`.
+
+- **Failsafe Plugin** is designed for running **integration tests** during the `integration-test` and `verify` phases. It executes tests that should run after the package is created, often named like `*IT.java`.
+
+Main differences:
+| Feature          | Surefire                  | Failsafe                 |
+|------------------|--------------------------|--------------------------|
+| Lifecycle phases | `test`                   | `integration-test`, `verify` |
+| Purpose          | Unit testing             | Integration testing       |
+| Failure handling | Fails build on test failure immediately | Allows running `verify` for post-processing (like cleanup) |
+| Typical test class naming conventions | `*Test`        | `*IT`                    |
+
+---
+
+### 6. How do you configure the Maven Surefire plugin in `pom.xml`?
+
+**Answer:**  
+Configuration example:
+
+```xml
+<build>  
+    <plugins>  
+        <plugin>  
+            <groupId>org.apache.maven.plugins</groupId>  
+            <artifactId>maven-surefire-plugin</artifactId>  
+            <version>3.0.0-M7</version>  
+            <configuration>  
+                <includes>  
+                    <include>**/*Test.java</include>  
+                </includes>  
+                <testFailureIgnore>false</testFailureIgnore>  
+            </configuration>  
+        </plugin>  
+    </plugins>  
+</build>
+```
+
+Key configuration options:
+- `<includes>`: Specify which tests to run.
+- `<excludes>`: Specify tests to exclude.
+- `<testFailureIgnore>`: Whether to ignore test failures.
+- `<forkCount>`, `<reuseForks>`: For controlling JVM forking.
+
+---
+
+### 7. How do you use Maven profiles to manage different database configurations in `pom.xml`?
+
+**Answer:**  
+You can define multiple profiles with different properties or dependencies, each activating based on a profile id. For example:
+
+```xml
+<profiles>  
+    <profile>  
+        <id>dev</id>  
+        <properties>  
+            <db.url>jdbc:mysql://localhost:3306/devdb</db.url>  
+            <db.username>devuser</db.username>  
+        </properties>  
+        <dependencies>  
+            <!-- dev specific dependencies -->  
+        </dependencies>  
+    </profile>  
+
+    <profile>  
+        <id>prod</id>  
+        <properties>  
+            <db.url>jdbc:mysql://prodserver:3306/proddb</db.url>  
+            <db.username>produser</db.username>  
+        </properties>  
+        <dependencies>  
+            <!-- prod specific dependencies -->  
+        </dependencies>  
+    </profile>  
+</profiles>
+```
+
+You then activate the profile by:
+
+```bash
+mvn clean install -Pdev
+```
+
+---
+
+### 8. What is the default lifecycle phase where the Surefire plugin executes tests?
+
+**Answer:**  
+The Maven Surefire plugin runs tests during the **`test` phase** of the default build lifecycle.
+
+---
+
+### 9. How does the Failsafe plugin improve integration testing compared to using the Surefire plugin for integration tests?
+
+**Answer:**  
+The Failsafe plugin runs integration tests during the **`integration-test`** and **`verify`** phases, allowing:
+
+- The ability to perform integration tests **after packaging** (jar/war created).
+- Allows post-integration-test actions (e.g., shutdown servers) during the verify phase.
+- If integration tests fail, the build will fail during verify phase rather than earlier, so cleanup/finalization can still occur.
+- Surefire immediately fails build on test failure, making it less suitable for integration tests requiring post-test steps.
+
+---
+
+### 10. Can you explain how to skip tests using Maven Surefire plugin during build?
+
+**Answer:**  
+You can skip tests in multiple ways:
+
+- Using command line:
+
+```bash
+mvn install -DskipTests      # Skips running tests but compiles them.
+mvn install -Dmaven.test.skip=true  # Skips compiling and running tests.
+```
+
+- Using `pom.xml` configuration:
+
+```xml
+<configuration>
+    <skipTests>true</skipTests>
+</configuration>
+```
+
+`skipTests` skips test execution but compiles tests, whereas `maven.test.skip` skips both compiling and running tests.
+
+---
+
+These questions cover essential Maven topics for interviews with answers designed to test conceptual and practical understanding. Let me know if you want more questions or focus on any specific area!
