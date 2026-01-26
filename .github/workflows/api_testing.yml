@@ -35,7 +35,7 @@ jobs:
         run: mvn clean test
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          GITHUB_API_KEY: ${{ secrets.GITHUB_API_KEY }}
+          GITHUB_API_KEY: ${{ secrets.API_GITHUB_API_KEY }}
 
       - name: Debug – find extent report
         if: always()
