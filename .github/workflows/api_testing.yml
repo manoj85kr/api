@@ -71,4 +71,4 @@ jobs:
             GitHub Actions
           to: ${{ secrets.MAIL_TO }}
           from: GitHub Actions <${{ secrets.SMTP_USERNAME }}>
-          attachments: 'target/**/*.txt'
+          attachments: 'gitLabQuestions.txt'
