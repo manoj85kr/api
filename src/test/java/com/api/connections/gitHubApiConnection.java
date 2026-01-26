@@ -13,7 +13,7 @@ import com.api.requestbodystruct.constructUrl;
 public class gitHubApiConnection {
 	public static String postMakeConnection(String question) throws IOException, InterruptedException {
 		StringBuilder sb = new StringBuilder();
-		String apiKey = System.getenv("GITHUB_API_KEY");
+		String apiKey = System.getenv("API_GITHUB_API_KEY");
 		String reader = "";
 		URL url = new URL(Configuration.pro.getProperty("url"));
 		System.out.println("Url : " + url);
